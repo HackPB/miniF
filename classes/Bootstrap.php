@@ -17,8 +17,8 @@ class Bootstrap {
 			$this->action = $this->request['action'];
 		}
 
-		echo $this->controller; //test where you are (controler)
-		echo $this->action;//est where you are (action)
+		//echo $this->controller; //test where you are (controler)
+		//echo $this->action;//test where you are (action)
 	}
 
 	public function createController(){
@@ -26,7 +26,7 @@ class Bootstrap {
 		if(class_exists($this->controller)){
 			$parents = class_parents($this->controller);
 			//check if is extended
-			if(in_array("controller", $parents)){
+			if(in_array("Controller", $parents)){
 				if(method_exists($this->controller, $this->action)){
 					return new $this->controller($this->action, $this->request);
 				}else{
